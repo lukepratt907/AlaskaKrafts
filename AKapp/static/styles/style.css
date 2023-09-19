@@ -8,3 +8,10 @@ body {
     background-color: var(--bg-color);
     color: var(--text-color);/* needs to change */
 }
+.navbar a {
+    text-decoration: none;/* removes underline */
+}
+.navbar a:hover,
+.navbar a:active {
+    color: green;/* temp color*/
+}
