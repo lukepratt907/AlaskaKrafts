@@ -1,0 +1,10 @@
+:root {
+    --bg-color: #FFB6C1;
+    --main-color: black;/* temp */
+    --second-color: yellow;/* temp */
+    --text-color: #87CEFA;
+}
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);/* needs to change */
+}
