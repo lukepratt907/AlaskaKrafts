@@ -1,22 +1,13 @@
-<!DOCTYPE html>
-{% load static %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'styles/style.css' %}">
-    <title>Register</title>
-</head>
-<body>
-    <header>
-        <nav class="navbar">
-            <a href="">Home</a>
-            <a href="/register">Register</a><!--only shows up when not logged in-->
-            <a href="/signin">Log In</a><!--only shows up when not logged in-->
-            <a href="">Log Out</a><!--only shows up when logged in-->
-            <a href="/about">About Us</a>
-        </nav>
-    </header>
-    <h1>This is where you will make an account</h1>
-</body>
-</html>
+{% extends 'layout.html' %}
+
+{% block contents %}
+<h1>This is where you will make an account</h1>
+    {% if errormessage %}
+        <p>{{ errormessage }}</p>
+    {% endif %}
+<form action="{% url 'register' %}" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit">
+</form>
+{% endblock %}
