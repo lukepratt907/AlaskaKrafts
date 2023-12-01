@@ -18,7 +18,7 @@ def login_page(request):
         # Check if authentication successful
         if user is not None:
             login(request, user)
-            return HttpResponseRedirect(reverse("books:login_page"))
+            return HttpResponseRedirect(reverse("home-page"))
         else:
             return render(request, "login.html", {
                 "message": "Invalid username and/or password."
@@ -45,14 +45,14 @@ def register_page(request):
                 'message': 'username already exists'
             })
         login(request, user)
-        return HttpResponseRedirect(reverse("books:home_page"))
+        return HttpResponseRedirect(reverse("home-page"))
     
     else:
         return render(request, 'register.html')
 
 def logout_view(request):
     logout(request)
-    return HttpResponseRedirect(reverse('books:home_page'))
+    return HttpResponseRedirect(reverse('home-page'))
 
 def about_page(request):
     return render(request, 'about.html')

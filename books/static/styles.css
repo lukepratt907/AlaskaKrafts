@@ -1,3 +1,9 @@
-h1 {
-    align-items: center;
+#gridholder {
+    display: grid;
+    grid-template-columns: 2fr;
+}
+.column-1 {
+}
+.column-2 {
+    
 }
