@@ -1,9 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.db import IntegrityError
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse, HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
 from django.urls import reverse
-from .models import User
+from django.http import JsonResponse
+from .models import User, Book
 
 # Create your views here.
 def home_page(request):
@@ -57,11 +59,34 @@ def logout_view(request):
 def about_page(request):
     return render(request, 'about.html')
 
+@login_required(login_url='login.html')
 def favorites_page(request):
-    pass
+    return render(request, 'favorites.html', {
+        'favorites': request.user.favorites.all()
+    })
 
+@login_required(login_url='login.html')
 def cart_page(request):
-    pass
+    return render(request, 'cart.html', {
+        'cart': request.user.cart.all()
+    })
 
-def favorite_view(request):
-    pass
+@login_required(login_url='login.html')
+def cart_view(request, book_id):
+    book = get_object_or_404(Book, id=book_id)
+    request.user.cart.add(book)
+    request.user.save()
+    status = {
+        'id': book_id
+    }
+    return JsonResponse(status)
+
+@login_required(login_url='login.html')
+def favorite_view(request, book_id):
+    book = get_object_or_404(Book, id=book_id)
+    request.user.favorites.add(book)
+    request.user.save()
+    status = {
+        'id': book_id
+    }
+    return JsonResponse(status)
