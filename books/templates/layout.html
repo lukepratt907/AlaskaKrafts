@@ -5,16 +5,19 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>{% block title %}Auctions{% endblock %}</title>
-        <link rel="stylesheet" href="https://cdn.simplecss.org/simple.css">
+        <title>{% block title %}Alaska Krafts{% endblock %}</title>
+        <link rel="stylesheet" href="https://cdn.simplecss.org/simple.css"><!--temp, need to bootstrap-->
         <link rel="stylesheet" href="{% static 'styles.css' %}" >
     </head>
     <body>
         <header>
+        {% block header %}
             <h1>Alaska Krafts</h1>
+        {% endblock %}
             <nav>
                 <span>
-                    <a href="{% url 'home-page' %}"> Home</a>
+                    <a href="{% url 'home-page' %}">Home</a>
+                    <a href="{% url 'about-page' %}">About</a>
                 </span>
                 <span class="welcome">
                     {% if user.is_authenticated %}

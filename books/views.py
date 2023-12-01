@@ -55,7 +55,7 @@ def logout_view(request):
     return HttpResponseRedirect(reverse('books:home_page'))
 
 def about_page(request):
-    pass
+    return render(request, 'about.html')
 
 def favorites_page(request):
     pass
