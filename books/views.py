@@ -9,7 +9,10 @@ from .models import User, Book
 
 # Create your views here.
 def home_page(request):
-    return render(request, 'index.html')
+    return render(request, 'index.html', {
+        'books': Book.objects.all(),
+        'user': request.user,
+    })
 
 def login_page(request):
     if request.method == "POST":
