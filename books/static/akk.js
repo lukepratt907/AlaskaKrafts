@@ -74,3 +74,33 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+document.addEventListener('DOMContentLoaded', function() {
+    const header = document.getElementById('watchlist-cart')
+    const add = document.getElementById('cart-wishlist')
+    console.log(add)
+    const remove = document.getElementById('cart-watchlist')
+    console.log(remove)
+
+    header.addEventListener('click', function(event) {
+        event.preventDefault();
+        const listingId = header.innerHTML.href;
+        console.log(header.innerHTML)
+        if (document.querySelector('#doo').innerHTML === "<a id='cart-wishlist' href='{% url 'cart-view' book.id %}'></a>Add To Cart") {
+            document.querySelector('#doo').innerHTML = "<a id='cart-wishlist' href='{% url 'removecart-view' book.id %}'></a>Remove From Cart"
+            fetch(add.href)
+            .then(response => response.text())
+            .then(data => {
+                console.log(data)
+            })
+        }
+        else {
+            document.querySelector('#doo').innerHTML = "<a id='cart-wishlist' href='{% url 'cart-view' book.id %}'></a>Add To Cart"            
+            console.log(remove.href)
+            fetch(remove.href)
+            .then(response => response.text())
+            .then(data => {
+                console.log(data)
+            })
+        }
+    });
+});

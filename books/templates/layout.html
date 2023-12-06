@@ -8,6 +8,8 @@
         <title>{% block title %}Alaska Krafts{% endblock %}</title>
         <link rel="stylesheet" href="https://cdn.simplecss.org/simple.css"><!--temp, need to bootstrap-->
         <link rel="stylesheet" href="{% static 'styles.css' %}" >
+        <script src="{% static 'akk.js'%}"></script>
+
     </head>
     <body>
         <header>
@@ -23,6 +25,7 @@
                     {% if user.is_authenticated %}
                         <a href="{% url 'favorites-page' %}">Favorites</a>
                         <a href="{% url 'cart-page' %}">Cart</a>
+                        <a href="{% url 'profile-page' %}">Profile</a>
                         Welcome <strong>{{ user.username }}!</strong>
                         <a href="{% url 'logout-view' %}">Log Out</a>
                     {% else %}

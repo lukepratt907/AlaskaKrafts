@@ -9,10 +9,20 @@ from .models import User, Book
 
 # Create your views here.
 def home_page(request):
-    return render(request, 'index.html', {
+    if request.user.is_anonymous != True:
+       return render(request, 'index.html', {
         'books': Book.objects.all(),
         'user': request.user,
-    })
+        'cart': request.user.cart.all(), # add this when user is logged in
+        'favorites': request.user.favorites.all() # add this when user is logged in
+        })
+    else: 
+        return render(request, 'index.html', {
+            'books': Book.objects.all(),
+            'user': request.user,
+            #'cart': request.user.cart.all(), # add this when user is logged in
+            #'favorites': request.user.favorites.all() # add this when user is logged in
+        })
 
 def login_page(request):
     if request.method == "POST":
@@ -85,6 +95,16 @@ def cart_view(request, book_id):
     return JsonResponse(status)
 
 @login_required(login_url='login.html')
+def removecart_view(request, book_id):
+    book = get_object_or_404(Book, id=book_id)
+    request.user.favorites.remove(book)
+    request.user.save()
+    status = {
+        'id': book_id
+    }
+    return JsonResponse(status)
+
+@login_required(login_url='login.html')
 def favorite_view(request, book_id):
     book = get_object_or_404(Book, id=book_id)
     request.user.favorites.add(book)
@@ -93,3 +113,16 @@ def favorite_view(request, book_id):
         'id': book_id
     }
     return JsonResponse(status)
+
+@login_required(login_url='login.html')
+def removefavorite_view(request, book_id):
+    book = get_object_or_404(Book, id=book_id)
+    request.user.favorites.remove(book)
+    request.user.save()
+    status = {
+        'id': book_id
+    }
+    return JsonResponse(status)
+
+def profile_page(request):
+    pass

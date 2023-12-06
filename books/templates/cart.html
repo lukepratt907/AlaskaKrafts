@@ -7,5 +7,22 @@
 {% endblock %}
 
 {% block content %}
-
+    {% for book in cart %}
+        <article>
+            <div>{{ book.title }}</div>
+            <div>Description: {{ book.description }}</div>
+            <div>Current Price: {{ book.price }}$</div>
+            <div><img src="{{ book.image.url }}" width="50px"></div>
+            {% if book in cart %}<!--.all()?-->
+                <div id="watchlist-image" dataset="{{ book.id }}">
+                    <a dataset="{{ book.id }}" id="watchlist" href="{% url 'removefavorite-view' book.id %}"><img class="foo" id="foo" src='https://cdn.icon-icons.com/icons2/1369/PNG/512/-favorite_90527.png'></a>
+                </div>
+            {% else %}
+                <div id="watchlist-image" dataset="{{ book.id }}">
+                    <a dataset="{{ book.id }}" id="wishlist" href="{% url 'favorite-view' book.id %}"><img class="foo" id="foo" src='https://cdn-icons-png.flaticon.com/512/73/73814.png'></a>
+                </div>
+            <button><a href="{% url 'cart-view' book.id %}"></a>Add To Cart</button><!--put this along side heart icon-->
+        </article>
+            {% endif %}
+    {% endfor %}
 {% endblock %}
