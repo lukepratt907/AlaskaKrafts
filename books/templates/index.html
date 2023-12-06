@@ -8,15 +8,16 @@
             <div>Description: {{ book.description }}</div>
             <div>Current Price: {{ book.price }}$</div>
             <div><img src="{{ book.image.url }}" width="50px"></div>
+            {% if book in user.favories.all %}<!--.all()?-->
+                <div id="watchlist-image" dataset="{{ book.id }}">
+                    <a dataset="{{ book.id }}" id="watchlist" href="{% url 'favorite-view' %}"><img id="foo" src='https://cdn.icon-icons.com/icons2/1369/PNG/512/-favorite_90527.png'></a>
+                </div>
+            {% else %}
+                <div id="watchlist-image" dataset="{{ book.id }}">
+                    <a dataset="{{ book.id }}" id="wishlist" href="{% url 'favorite-view' %}"><img class="foo" id="foo" src='https://cdn-icons-png.flaticon.com/512/73/73814.png'></a>
+                </div>
         </article>
-        {% if book in user.favories.all %}<!--.all()?-->
-        <div id="watchlist-image" dataset="{{ book.id }}">
-            <a dataset="{{ book.id }}" id="watchlist" href="{% url 'favorite-view' %}"><img id="foo" src='https://cdn.icon-icons.com/icons2/1369/PNG/512/-favorite_90527.png'></a>
-        </div>
-        {% else %}
-        <div id="watchlist-image" dataset="{{ book.id }}">
-            <a dataset="{{ book.id }}" id="wishlist" href="{% url 'favorite-view' %}"><img id="foo" src='https://cdn-icons-png.flaticon.com/512/73/73814.png'></a>
-        </div>
+        
 {% endif %}
     {% endfor %}
 {% endblock %}
