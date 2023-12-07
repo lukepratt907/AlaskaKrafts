@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-
+{% load static %}
 {% block title %}Profile{% endblock %}
 
 {% block header %}
@@ -8,9 +8,15 @@
 
 {% block content %}
     <article>
+        {% if user.image %}
         <div>
-            <img src="{{ user.image }}">
+            <img src="{{ user.image.url }}">
         </div>
+        {% else %}
+        <div>
+            <img src="{% static 'profile.png' %}">
+        </div>
+        {% endif %}
         <div>
             {{ user.description }}
         </div>
