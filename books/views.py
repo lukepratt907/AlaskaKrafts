@@ -125,4 +125,11 @@ def removefavorite_view(request, book_id):
     return JsonResponse(status)
 
 def profile_page(request):
-    pass
+    return render(request, 'profile.html', {
+        'user': request.user,
+    })
+
+def editpic(request, user_id):
+    return render(request, 'editpic.html', {
+        
+    })
