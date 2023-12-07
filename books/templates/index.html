@@ -4,28 +4,44 @@
     {% for book in books %}
         <!--display book in article with all information(add to cart and favorite button)-->
         <article>
-            <div>{{ book.title }}</div>
-            <div>Description: {{ book.description }}</div>
-            <div>Current Price: {{ book.price }}$</div>
-            <div><img src="{{ book.image.url }}" width="50px"></div>
-            {% if book in favorites %}<!--.all()?-->
-                <div id="watchlist-image" dataset="{{ book.id }}">
-                    <a dataset="{{ book.id }}" id="watchlist" href="{% url 'removefavorite-view' book.id %}"><img class="foo" id="foo" src='https://cdn.icon-icons.com/icons2/1369/PNG/512/-favorite_90527.png'></a>
+            <div class="container-fluid">
+                <div class="row content">
+
+                    <div class="col-sm-3 sidenav">
+                        <div><img src="{{ book.image.url }}" width="50px"></div>
+                    </div>
+                    
+                    <div class="col-sm-9">
+                        <div><small>{{ book.title }}</small></div>
+                        <hr>
+                        <div>Description: {{ book.description }}</div>
+                        <hr>
+                        <div>Current Price: {{ book.price }}$</div>
+                        <br>
+                        {% if book in favorites %}<!--.all()?-->
+                        <div id="watchlist-image" dataset="{{ book.id }}">
+                            <a dataset="{{ book.id }}" id="watchlist" href="{% url 'removefavorite-view' book.id %}"><img class="foo" id="foo" src='https://cdn.icon-icons.com/icons2/1369/PNG/512/-favorite_90527.png'></a>
+                        </div>
+                        {% else %}
+                            <div id="watchlist-image" dataset="{{ book.id }}">
+                                <a dataset="{{ book.id }}" id="wishlist" href="{% url 'favorite-view' book.id %}"><img class="foo" id="foo" src='https://cdn-icons-png.flaticon.com/512/73/73814.png'></a>
+                            </div>
+                        {% endif %}
+                        <br>
+                        {% if book in cart %}
+                            <div id="watchlist-cart">
+                                <button id="doo"><a id="cart-wishlist" href="{% url 'removecart-view' book.id %}"></a>Remove From Cart</button><!--put this along side heart icon-->
+                            </div>
+                        {% else %}
+                            <div id="watchlist-cart">
+                                <button id="doo"><a id="cart-wishlist" href="{% url 'cart-view' book.id %}"></a>Add To Cart</button><!--put this along side heart icon-->
+                            </div>
+                        {% endif %}
+                    </div>
+                    <!-- if comments, they could go here-->
                 </div>
-            {% else %}
-                <div id="watchlist-image" dataset="{{ book.id }}">
-                    <a dataset="{{ book.id }}" id="wishlist" href="{% url 'favorite-view' book.id %}"><img class="foo" id="foo" src='https://cdn-icons-png.flaticon.com/512/73/73814.png'></a>
-                </div>
-            {% endif %}
-            {% if book in cart %}
-                <div id="watchlist-cart">
-                    <button id="doo"><a id="cart-wishlist" href="{% url 'removecart-view' book.id %}"></a>Remove From Cart</button><!--put this along side heart icon-->
-                </div>
-            {% else %}
-                <div id="watchlist-cart">
-                    <button id="doo"><a id="cart-wishlist" href="{% url 'cart-view' book.id %}"></a>Add To Cart</button><!--put this along side heart icon-->
-                </div>
-            {% endif %}
+            </div>
+            
         </article>
     {% endfor %}
 {% endblock %}
