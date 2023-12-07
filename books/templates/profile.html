@@ -8,7 +8,12 @@
 
 {% block content %}
     <article>
-        <div><img src=""></div>
-        <button><a href="{% 'editpic' user.id %}"></a>Edit Picture</button>
+        <div>
+            <img src="{{ user.image }}">
+        </div>
+        <div>
+            {{ user.description }}
+        </div>
+        <a href="{% url 'editpic' %}">Edit Profile</a>
     </article>
 {% endblock %}

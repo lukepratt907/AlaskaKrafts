@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.db import IntegrityError
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponse, HttpResponseRedirect
@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from django.http import JsonResponse
 from .models import User, Book
+from .forms import Pic
 
 # Create your views here.
 def home_page(request):
@@ -129,7 +130,16 @@ def profile_page(request):
         'user': request.user,
     })
 
-def editpic(request, user_id):
-    return render(request, 'editpic.html', {
-        
-    })
+def editpic(request):
+    if request.method == 'POST':
+        form = Pic(request.POST)
+        if form.is_valid():
+            pic = form.save()
+            pic.save()
+            return redirect("profile-page")
+        else:
+            return redirect("home-page")
+    else:
+        return render(request, 'editpic.html', {
+            'form': Pic
+        })

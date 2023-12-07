@@ -5,6 +5,8 @@ from django.contrib.auth.models import AbstractUser
 class User(AbstractUser):
     favorites = models.ManyToManyField('Book', related_name='favorites', blank=True)
     cart = models.ManyToManyField('Book', related_name='cart', blank=True)
+    image = models.ImageField(upload_to='images/profile', blank=True)
+    description = models.TextField(max_length=500)
     #pass
 
 class Book(models.Model):

@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+{% block title %}Favorites{% endblock %}
+
+{% block header %}
+    <h1 class="title">Favorites</h1>
+{% endblock %}
+
+{% block content %}
+    <form action="{% url 'editpic' %}" method="POST">
+        {% csrf_token %}
+        {{ form.as_table }}
+        <div>
+            <input type="submit" name="submit" value="Create Listing">
+        </div>
+    </form>
+{% endblock %}
