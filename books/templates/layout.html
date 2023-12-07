@@ -23,6 +23,7 @@
                 <span>
                     <a href="{% url 'home-page' %}">Home</a>
                     <a href="{% url 'about-page' %}">About</a>
+                    <a href="{% url 'contact-page' %}">Contact Us</a>
                 </span>
                 <span class="welcome">
                     {% if user.is_authenticated %}
@@ -42,5 +43,10 @@
             {% block content %}
             {% endblock %}
         </main>
+
+        <footer class="container-fluid footer">
+            <p>Footer Text</p>
+        </footer>
+
     </body>
 </html>

@@ -15,6 +15,6 @@ urlpatterns = [
     path("removecart/<int:book_id>", views.removecart_view, name="removecart-view"),
     path("profilepage/", views.profile_page, name="profile-page"),
     path("editpicture/", views.editpic, name="editpic"),
-
+    path("contact/", views.contact_page, name="contact-page"),
     
 ]

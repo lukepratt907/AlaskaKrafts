@@ -73,6 +73,9 @@ def logout_view(request):
 def about_page(request):
     return render(request, 'about.html')
 
+def contact_page(request):
+    return render(request, 'contact.html')
+
 @login_required(login_url='login.html')
 def favorites_page(request):
     return render(request, 'favorites.html', {
