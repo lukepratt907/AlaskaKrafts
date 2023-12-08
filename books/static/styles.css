@@ -25,10 +25,10 @@
 }
 
 /* Set black background color, white text and some padding */
-footer {
+.footer {
   background-color: #555;
   color: white;
-  padding: 5px;
+  padding: 0px;
   width: 100%;
   position: fixed;
   bottom: 0;
