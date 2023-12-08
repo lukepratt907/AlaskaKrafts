@@ -148,3 +148,13 @@ def editpic(request):
         return render(request, 'editpic.html', {
             'form': Pic
         })
+
+from django.db.models import Q
+def search_books(request):
+    query = request.GET.get('q')
+    if query:
+        books = Book.objects.filter(Q(title__icontains=query) | Q(description__icontains=query))
+    else:
+        books = Book.objects.all()
+
+    return render(request, 'search.html', {'books': books, 'query': query})

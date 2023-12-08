@@ -1,6 +1,10 @@
 {% extends "layout.html" %}
 
 {% block content %}
+    <form action="{% url 'search-books' %}" method="GET" class="search-form">
+        <input type="text" name="q" placeholder="Search for books">
+        <button type="submit">Search</button>
+    </form>
     {% for book in books %}
         <!--display book in article with all information(add to cart and favorite button)-->
         <article>
