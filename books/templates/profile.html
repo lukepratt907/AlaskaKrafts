@@ -7,19 +7,22 @@
 {% endblock %}
 
 {% block content %}
-    <article>
+    <article class="profile">
         {% if user.image %}
-        <div>
-            <img src="{{ user.image.url }}">
-        </div>
+            <div>
+                <img src="{{ user.image.url }}">
+            </div>
         {% else %}
-        <div>
-            <img src="{% static 'profile.png' %}">
-        </div>
+            <div>
+                <img src="{% static 'profile.png' %}">
+            </div>
         {% endif %}
-        <div>
-            {{ user.description }}
-        </div>
-        <a href="{% url 'editpic' %}">Edit Profile</a>
     </article>
+    <article>
+        <div>
+            <strong>About:</strong> {{ user.description }}
+        </div>
+    </article>
+    <a class="btn" href="{% url 'editpic' %}">Edit Profile</a>
+
 {% endblock %}

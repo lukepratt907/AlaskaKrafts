@@ -19,23 +19,28 @@
         {% block header %}
             <h1 class="title">Alaska Krafts</h1>
         {% endblock %}
+            <span class="start">
+                <img class="emblem" src="{% static 'emblem.png' %}">
+            </span>
             <nav>
                 <span>
                     <a href="{% url 'home-page' %}">Home</a>
                     <a href="{% url 'about-page' %}">About</a>
                     <a href="{% url 'contact-page' %}">Contact Us</a>
                 </span>
-                <span class="welcome">
+                <span>
                     {% if user.is_authenticated %}
                         <a href="{% url 'favorites-page' %}">Favorites</a>
                         <a href="{% url 'cart-page' %}">Cart</a>
                         <a href="{% url 'profile-page' %}">Profile</a>
+                <span class="welcome">
                         <strong class="title"> Welcome {{ user.username }}!</strong>
                         <a href="{% url 'logout-view' %}">Log Out</a>
                     {% else %}
                         <a href="{% url 'login-page' %}">Log In</a>
                         <a href="{% url 'register-page' %}">Register</a>
                     {% endif %}
+                </span>
                 </span>
             </nav>
             <form action="{% url 'search-books' %}" method="GET" class="search-form">

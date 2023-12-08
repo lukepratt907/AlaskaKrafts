@@ -67,3 +67,61 @@ body > header {
   background-color: #fff;
   padding: 10px; 
 }
+
+center {
+  font-size: large;
+}
+
+a {
+  text-decoration: none;
+  color: pink;
+}
+
+.btn {
+  background-color: pink;
+  font-size: 12px;
+  font-weight: 500;
+  color: black;
+  padding: 10px 20px;
+  border-radius: 500px;
+  font-style: oblique;
+}
+
+a:link {
+ color: black;
+}
+a:active {
+  color: black;
+}
+a:visited{
+  color:black;
+}
+a:hover{
+  color: purple;
+}
+a:focus{
+  color:black;
+}
+.btn:hover {
+  background-color: lightsalmon;
+}
+.welcome {
+  float: right;
+  right: 0px;
+  position: absolute;
+}
+.start {
+  left: 0px;
+  top: 30px;
+  position: absolute;
+  height: auto;
+  width: 250px;
+}
+nav {
+  display: flex;
+  text-align: center;
+}
+.profile {
+  margin-left: 100px;
+  border: 0px;
+}
