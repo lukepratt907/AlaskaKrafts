@@ -79,13 +79,15 @@ def contact_page(request):
 @login_required(login_url='login.html')
 def favorites_page(request):
     return render(request, 'favorites.html', {
-        'favorites': request.user.favorites.all()
+        'favorites': request.user.favorites.all(),
+        'cart': request.user.cart.all(),
     })
 
 @login_required(login_url='login.html')
 def cart_page(request):
     return render(request, 'cart.html', {
-        'cart': request.user.cart.all()
+        'cart': request.user.cart.all(),
+        'favorites': request.user.favorites.all(),
     })
 
 @login_required(login_url='login.html')
@@ -102,11 +104,11 @@ def cart_view(request, book_id):
 @login_required(login_url='login.html')
 def removecart_view(request, book_id):
     book = get_object_or_404(Book, id=book_id)
-    request.user.favorites.remove(book)
+    request.user.cart.remove(book)
     request.user.save()
-    #status = {
-        #'id': book_id
-    #}
+    status = {
+        'id': book_id
+    }
     return redirect("cart-page")
     #return JsonResponse(status)
 
@@ -118,6 +120,7 @@ def favorite_view(request, book_id):
     status = {
         'id': book_id
     }
+    return redirect('favorites-page')
     return JsonResponse(status)
 
 @login_required(login_url='login.html')
@@ -128,6 +131,7 @@ def removefavorite_view(request, book_id):
     status = {
         'id': book_id
     }
+    return redirect('favorites-page')
     return JsonResponse(status)
 
 def profile_page(request):
