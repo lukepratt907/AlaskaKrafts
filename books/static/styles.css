@@ -26,12 +26,30 @@
 
 /* Set black background color, white text and some padding */
 .footer {
-  background-color: #555;
+  background-color: rgb(221, 179, 212);
   color: white;
   padding: 0px;
   width: 100%;
   position: fixed;
   bottom: 0;
+}
+/* Global variables. */
+:root,
+::backdrop {
+
+  /* Default (light) theme */
+  --bg: rgb(221, 179, 212);
+  --accent-bg: #f5f7ff;
+  --text: #212121;
+  --text-light: #585858;
+  --border: #898EA4;
+  --accent: #ffea00;
+  --accent-text: var(--bg);
+
+}
+body > header {
+  
+  background-color: var(--bg);
 }
 
 /* On small screens, set height to 'auto' for sidenav and grid */
