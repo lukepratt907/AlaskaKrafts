@@ -86,3 +86,19 @@ a:focus{
 .btn:hover {
   background-color: lightsalmon;
 }
+.welcome {
+  float: right;
+  right: 0px;
+  position: absolute;
+}
+.start {
+  left: 0px;
+  top: 30px;
+  position: absolute;
+  height: auto;
+  width: 250px;
+}
+nav {
+  display: flex;
+  text-align: center;
+}
