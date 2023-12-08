@@ -18,11 +18,11 @@
             </div>
             
             <div class="col-sm-9">
-                <div><small>{{ book.title }}</small></div>
+                <div><strong>{{ book.title }}</strong></div>
                 <hr>
-                <div>Description: {{ book.description }}</div>
+                <div><strong>Description:</strong> {{ book.description }}</div>
                 <hr>
-                <div>Price: {{ book.price }}$</div>
+                <div><strong>Price:</strong> {{ book.price }}$</div>
                 <br>
                 {% if book in favorites %}<!--.all()?-->
                     <div>
