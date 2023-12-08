@@ -104,11 +104,11 @@ def removecart_view(request, book_id):
     book = get_object_or_404(Book, id=book_id)
     request.user.favorites.remove(book)
     request.user.save()
-    status = {
-        'id': book_id
-    }
+    #status = {
+        #'id': book_id
+    #}
     return redirect("cart-page")
-    return JsonResponse(status)
+    #return JsonResponse(status)
 
 @login_required(login_url='login.html')
 def favorite_view(request, book_id):
