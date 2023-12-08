@@ -38,6 +38,10 @@
                     {% endif %}
                 </span>
             </nav>
+            <form action="{% url 'search-books' %}" method="GET" class="search-form">
+                <input type="text" name="q" placeholder="Search for books">
+                <button type="submit">Search</button>
+            </form>
         </header>
         <main>
             {% block content %}
