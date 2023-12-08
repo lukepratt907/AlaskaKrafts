@@ -10,8 +10,8 @@
     <div>
         <a class="btn" href="{% url 'checkout-page' %}">Checkout</a>
     </div>
+    <br>
     {% for book in cart %}
-        <!--display book in article with all information(add to cart and favorite button)-->
         <article>
             <div class="container-fluid">
                 <div class="row content">
@@ -29,7 +29,7 @@
                         <br>
                         {% if book in favorites %}<!--.all()?-->
                             <div>
-                                <ahref="{% url 'removefavorite-view' book.id %}"><img class="foo" src='https://cdn.icon-icons.com/icons2/1369/PNG/512/-favorite_90527.png'></a>
+                                <a href="{% url 'removefavorite-view' book.id %}"><img class="foo" src='https://cdn.icon-icons.com/icons2/1369/PNG/512/-favorite_90527.png'></a>
                             </div>
                         {% else %}
                             <div>

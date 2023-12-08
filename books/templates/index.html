@@ -2,7 +2,6 @@
 
 {% block content %}
     {% for book in books %}
-        <!--display book in article with all information(add to cart and favorite button)-->
         <article>
             <div class="container-fluid">
                 <div class="row content">
@@ -18,7 +17,7 @@
                         <hr>
                         <div><strong>Price:</strong> {{ book.price }}$</div>
                         <br>
-                        {% if book in favorites %}<!--.all()?-->
+                        {% if book in favorites %}
                             <div>
                                 <a href="{% url 'removefavorite-view' book.id %}"><img class="foo" src='https://cdn.icon-icons.com/icons2/1369/PNG/512/-favorite_90527.png'></a>
                             </div>

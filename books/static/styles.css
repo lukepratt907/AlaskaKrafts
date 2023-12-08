@@ -103,3 +103,7 @@ nav {
   display: flex;
   text-align: center;
 }
+.profile {
+  margin-left: 100px;
+  border: 0px;
+}
