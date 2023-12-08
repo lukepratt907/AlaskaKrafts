@@ -8,7 +8,7 @@
 
 {% block content %}
     <div>
-        <a href="{% url 'checkout-page' %}">Checkout</a>
+        <a class="btn" href="{% url 'checkout-page' %}">Checkout</a>
     </div>
     {% for book in cart %}
         <!--display book in article with all information(add to cart and favorite button)-->
@@ -39,11 +39,11 @@
                         <br>
                         {% if book in cart %}
                             <div>
-                                <a href="{% url 'removecart-view' book.id %}">Remove From Cart</a><!--put this along side heart icon-->
+                                <a class="btn" href="{% url 'removecart-view' book.id %}">Remove From Cart</a><!--put this along side heart icon-->
                             </div>
                         {% else %}
                             <div>
-                                <a href="{% url 'cart-view' book.id %}">Add To Cart</a><!--put this along side heart icon-->
+                                <a class="btn" href="{% url 'cart-view' book.id %}">Add To Cart</a><!--put this along side heart icon-->
                             </div>
                         {% endif %}
                     </div>

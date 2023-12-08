@@ -20,7 +20,7 @@
                         <br>
                         {% if book in favorites %}<!--.all()?-->
                             <div>
-                                <ahref="{% url 'removefavorite-view' book.id %}"><img class="foo" src='https://cdn.icon-icons.com/icons2/1369/PNG/512/-favorite_90527.png'></a>
+                                <a href="{% url 'removefavorite-view' book.id %}"><img class="foo" src='https://cdn.icon-icons.com/icons2/1369/PNG/512/-favorite_90527.png'></a>
                             </div>
                         {% else %}
                             <div>
@@ -30,11 +30,11 @@
                         <br>
                         {% if book in cart %}
                             <div>
-                                <a href="{% url 'removecart-view' book.id %}">Remove From Cart</a><!--put this along side heart icon-->
+                                <a class="btn" href="{% url 'removecart-view' book.id %}">Remove From Cart</a><!--put this along side heart icon-->
                             </div>
                         {% else %}
                             <div>
-                                <a href="{% url 'cart-view' book.id %}">Add To Cart</a><!--put this along side heart icon-->
+                                <a class="btn" href="{% url 'cart-view' book.id %}">Add To Cart</a><!--put this along side heart icon-->
                             </div>
                         {% endif %}
                     </div>
