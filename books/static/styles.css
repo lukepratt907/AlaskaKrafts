@@ -42,3 +42,10 @@
     }
     .row.content {height: auto;} 
     }
+
+/* change the text color */
+.search-form input[type="text"] {
+  color: #000; 
+  background-color: #fff;
+  padding: 10px; 
+}

@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block title %}Search Results{% endblock %}
+
+{% block header %}
+    <h1 class="title">Search Results</h1>
+{% endblock %}
+
+{% block content %}
+    <h2>Search results for "{{ query }}"</h2>
+
+    {% if books %}
+        {% for book in books %}
+            <!-- Display each book as you do in the index.html -->
+            <!--display book in article with all information(add to cart and favorite button)-->
+            <article>
+                <div class="container-fluid">
+                    <div class="row content">
+
+                        <div class="col-sm-3 sidenav">
+                            <div><img src="{{ book.image.url }}" width="50px"></div>
+                        </div>
+                        
+                        <div class="col-sm-9">
+                            <div><small>{{ book.title }}</small></div>
+                            <hr>
+                            <div>Description: {{ book.description }}</div>
+                            <hr>
+                            <div>Current Price: {{ book.price }}$</div>
+                            <br>
+                            {% if book in favorites %}<!--.all()?-->
+                            <div id="watchlist-image" dataset="{{ book.id }}">
+                                <a dataset="{{ book.id }}" id="watchlist" href="{% url 'removefavorite-view' book.id %}"><img class="foo" id="foo" src='https://cdn.icon-icons.com/icons2/1369/PNG/512/-favorite_90527.png'></a>
+                            </div>
+                            {% else %}
+                                <div id="watchlist-image" dataset="{{ book.id }}">
+                                    <a dataset="{{ book.id }}" id="wishlist" href="{% url 'favorite-view' book.id %}"><img class="foo" id="foo" src='https://cdn-icons-png.flaticon.com/512/73/73814.png'></a>
+                                </div>
+                            {% endif %}
+                            <br>
+                            {% if book in cart %}
+                                <div id="watchlist-cart">
+                                    <a id="cart-wishlist" href="{% url 'removecart-view' book.id %}">Remove From Cart</a><!--put this along side heart icon-->
+                                </div>
+                            {% else %}
+                                <div id="watchlist-cart">
+                                    <a id="cart-wishlist" href="{% url 'cart-view' book.id %}">Add To Cart</a><!--put this along side heart icon-->
+                                </div>
+                            {% endif %}
+                        </div>
+                        <!-- if comments, they could go here-->
+                    </div>
+                </div>
+                
+            </article>
+        {% endfor %}
+    {% else %}
+        <p>No results found.</p>
+    {% endif %}
+{% endblock %}
