@@ -30,11 +30,11 @@
                         <br>
                         {% if book in cart %}
                             <div id="watchlist-cart">
-                                <button id="doo"><a id="cart-wishlist" href="{% url 'removecart-view' book.id %}"></a>Remove From Cart</button><!--put this along side heart icon-->
+                                <a id="cart-wishlist" href="{% url 'removecart-view' book.id %}">Remove From Cart</a><!--put this along side heart icon-->
                             </div>
                         {% else %}
                             <div id="watchlist-cart">
-                                <button id="doo"><a id="cart-wishlist" href="{% url 'cart-view' book.id %}"></a>Add To Cart</button><!--put this along side heart icon-->
+                                <a id="cart-wishlist" href="{% url 'cart-view' book.id %}">Add To Cart</a><!--put this along side heart icon-->
                             </div>
                         {% endif %}
                     </div>
