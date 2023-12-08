@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block title %}Shopping Cart{% endblock %}
+
+{% block header %}
+    <h1 class="title">Shopping Cart</h1>
+{% endblock %}
+
+{% block content %}
+    <div>
+        <strong><center>Total Price: {{price}}$</center></strong>
+        <p><strong>Email us:</strong> ssitna@hotmail.com / lukeprattprofessional@gmail.com</p>
+        <p><strong>Or</strong></p>
+        <p><strong>Call us:</strong> 907-696-1485</p>
+    </div>
+    {% for book in cart %}
+        <!--display book in article with all information(add to cart and favorite button)-->
+        <article>
+            <div class="container-fluid">
+                <div class="row content">
+
+                    <div class="col-sm-3 sidenav">
+                        <div><img src="{{ book.image.url }}" width="100px"></div>
+                    </div>
+                    
+                    <div class="col-sm-9">
+                        <div><small>{{ book.title }}</small></div>
+                        <hr>
+                        <div>Description: {{ book.description }}</div>
+                        <hr>
+                        <div>Price: {{ book.price }}$</div>
+                        <br>
+                    </div>
+                </div>
+            </div>
+            
+        </article>
+    {% endfor %}
+{% endblock %}

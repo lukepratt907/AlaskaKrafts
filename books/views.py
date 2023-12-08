@@ -162,3 +162,14 @@ def search_books(request):
         books = Book.objects.all()
 
     return render(request, 'search.html', {'books': books, 'query': query})
+
+def checkout_page(request):
+    cart = request.user.cart.all()
+    price = 0
+    for book in cart:
+        price += book.price
+    return render(request, 'checkout.html', {
+        'price': price,
+        'cart': cart,
+        
+    })
