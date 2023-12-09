@@ -24,28 +24,30 @@
             </span>
             <nav>
                 <span>
-                    <a href="{% url 'home-page' %}">Home</a>
-                    <a href="{% url 'about-page' %}">About</a>
-                    <a href="{% url 'contact-page' %}">Contact Us</a>
+                    <a class="btn" href="{% url 'home-page' %}">Home</a>
+                    <a class="btn" href="{% url 'about-page' %}">About</a>
+                    <a class="btn" href="{% url 'contact-page' %}">Contact Us</a>
                 </span>
                 <span>
                     {% if user.is_authenticated %}
-                        <a href="{% url 'favorites-page' %}">Favorites</a>
-                        <a href="{% url 'cart-page' %}">Cart</a>
-                        <a href="{% url 'profile-page' %}">Profile</a>
+                        <a class="btn" href="{% url 'favorites-page' %}">Favorites</a>
+                        <a class="btn" href="{% url 'cart-page' %}">Cart</a>
+                        <a class="btn" href="{% url 'profile-page' %}">Profile</a>
                 <span class="welcome">
                         <strong class="title"> Welcome {{ user.username }}!</strong>
-                        <a href="{% url 'logout-view' %}">Log Out</a>
+                        <a class="btn" href="{% url 'logout-view' %}">Log Out</a>
                     {% else %}
-                        <a href="{% url 'login-page' %}">Log In</a>
-                        <a href="{% url 'register-page' %}">Register</a>
+                        <a class="btn" href="{% url 'login-page' %}">Log In</a>
+                        <a class="btn" href="{% url 'register-page' %}">Register</a>
                     {% endif %}
                 </span>
                 </span>
             </nav>
+            <br>
+            <br>
             <form action="{% url 'search-books' %}" method="GET" class="search-form">
                 <input type="text" name="q" placeholder="Search for books">
-                <button type="submit">Search</button>
+                <button type="submit" class="btn">Search</button>
             </form>
         </header>
         <main>
