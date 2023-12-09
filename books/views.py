@@ -141,10 +141,11 @@ def profile_page(request):
 
 def editpic(request):
     if request.method == 'POST':
-        form = Pic(request.POST)
+        form = Pic(request.POST, request.FILES)
         if form.is_valid():
-            pic = form.save()
-            pic.save()
+            profile = form.save(commit=False)
+            profile.save()
+            form.save_m2m()
             return redirect("profile-page")
         else:
             return redirect("home-page")
