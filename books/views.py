@@ -5,8 +5,8 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse, reverse_lazy
 from django.http import JsonResponse
-from .models import User, Book
-from .forms import Pic
+from .models import User, Book, Profile
+from .forms import Pic, UserForm
 
 # Create your views here.
 def home_page(request):
@@ -135,24 +135,33 @@ def removefavorite_view(request, book_id):
     return JsonResponse(status)
 
 def profile_page(request):
+    user_profile = Profile.objects.get(user=request.user)
     return render(request, 'profile.html', {
-        'user': request.user,
+        'profile': user_profile,
     })
 
 def editpic(request):
+    user_profile = Profile.objects.get(user=request.user)
     if request.method == 'POST':
-        form = Pic(request.POST, request.FILES)
-        if form.is_valid():
-            profile = form.save(commit=False)
+        user_form = UserForm(data=request.POST, instance=request.user)
+        profile_form = Pic(data=request.POST, instance=user_profile)
+        if user_form.is_valid() and profile_form.is_valid():
+            user = user_form.save()
+            profile = profile_form.save(commit=False)
+            profile.user = user
+            if 'image' in request.FILES:
+                profile.image = request.FILES['image']
             profile.save()
-            form.save_m2m()
             return redirect("profile-page")
         else:
             return redirect("home-page")
     else:
-        return render(request, 'editpic.html', {
-            'form': Pic
-        })
+        update_user_form = UserForm(instance=request.user)
+        update_profile_form = Pic(instance=user_profile)
+    return render(request, 'editpic.html', {
+            'update_user_form': update_user_form,
+            'update_profile_form': update_profile_form, 
+    })
 
 from django.db.models import Q
 def search_books(request):

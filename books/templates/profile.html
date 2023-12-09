@@ -8,9 +8,9 @@
 
 {% block content %}
     <article class="profile">
-        {% if user.image %}
+        {% if profile.image %}
             <div>
-                <img src="{{ user.image.url }}">
+                <img src="{{ profile.image.url }}">
             </div>
         {% else %}
             <div>
@@ -20,7 +20,7 @@
     </article>
     <article>
         <div>
-            <strong>About:</strong> {{ user.description }}
+            <strong>About:</strong> {{ profile.description }}
         </div>
     </article>
     <a class="btn" href="{% url 'editpic' %}">Edit Profile</a>
