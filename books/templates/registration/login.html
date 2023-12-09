@@ -1,0 +1,14 @@
+{% extends "auctions/layout.html" %}
+{% block main %}
+
+<h2>Login</h2>
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Login">
+</form>
+<p>Forgot your password? <a href="{% url 'password_reset' %}">Send me email.</a></p>
+<p> Don't have an account?<a href="{% url 'register' %}"> Register here.</a></p>
+
+{% endblock %}

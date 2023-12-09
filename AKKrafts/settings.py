@@ -21,10 +21,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-rw3!bco&uzzlq0(o#axbb#q5@m@=8&h4%=l7a7qemov8*c*-q*'
+SECRET_KEY = 'django-insecure-rw3!bco&uzzlq0(o#axbb#q5@m@=8&h4%=l7a7qemov8*c*-q*'#cant be shown
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = True #cant be shown
 
 ALLOWED_HOSTS = []
 
@@ -82,6 +82,7 @@ DATABASES = {
     }
 }
 DATABASES["default"] = dj_database_url.parse("postgres://akk_db_user:chUT5vu4qdsR68AuTIOAiLjVswicRweA@dpg-clp8qbp46foc73a7r2ng-a.oregon-postgres.render.com/akk_db")
+#cant be shown
 
 AUTH_USER_MODEL = 'books.User'
 # Password validation
@@ -127,3 +128,18 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_PASSWORD_VALIDATORS = []
+
+EMAIL_BACKEND='django.core.mail.backends.filebased.EmailBackend'
+EMAIL_FILE_PATH = os.path.join(BASE_DIR, 'sent_emails')
+
+SENDGRID_API_KEY = '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'#cant be shown
+DEFAULT_FROM_EMAIL = 'alaskakrafts907@gmail.com'
+
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = 'apikey'
+EMAIL_HOST_PASSWORD = SENDGRID_API_KEY
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
