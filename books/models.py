@@ -26,6 +26,11 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.user.username
+
+class Store(models.Model):
+    name = models.CharField(max_length=100)
+    address = models.CharField(max_length=100)
+    link = models.URLField(default='')
     
 class Book(models.Model):
 
@@ -34,6 +39,8 @@ class Book(models.Model):
     description = models.TextField(max_length=500)
     price = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True)
     image = models.ImageField(upload_to='images/listings', blank=True)
+    stores = models.ManyToManyField(Store)  # ManyToMany relationship with Store
+
     #image = models.URLField(default='')
 
 

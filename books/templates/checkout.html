@@ -42,10 +42,18 @@
                         <hr>
                         <div><strong>Price:</strong> {{ book.price }}$</div>
                         <br>
+                        <!-- Display stores for the book -->
+                        <div><strong>Available at:</strong></div>
+                        <ul>
+                            {% for store in item.stores %}
+                                <li>{{ store.name }} - {{ store.address }}</li>
+                            {% endfor %}
+                        </ul>
                     </div>
                 </div>
             </div>
             
         </article>
     {% endfor %}
+    
 {% endblock %}
