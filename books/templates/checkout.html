@@ -16,12 +16,9 @@
         <p><strong>Or</strong></p>
         <p><strong>Head to one of these stores/websites:</strong></p>
         <ul>
-            <li>Walmart</li>
-            <li>Amazon</li>
-            <li>Barnes & Noble</li>
-            <li>Greatland Graphics</li>
-            <li>Tod Communications</li>
-            <li>And More</li>
+            {% for store in stores %}
+                <li>{{ store.name }} - {{ store.address }} - <a class="btn" href="{{ store.link }}">Website</a></li>
+            {% endfor %}
             <!--add more-->
         </ul>
     </div>
@@ -42,13 +39,6 @@
                         <hr>
                         <div><strong>Price:</strong> {{ book.price }}$</div>
                         <br>
-                        <!-- Display stores for the book -->
-                        <div><strong>Available at:</strong></div>
-                        <ul>
-                            {% for store in stores %}
-                                <li>{{ store.name }} - {{ store.address }} - <a href={{ store.link }}>{{ store.link }}</a></li>
-                            {% endfor %}
-                        </ul>
                     </div>
                 </div>
             </div>
