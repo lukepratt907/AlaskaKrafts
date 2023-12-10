@@ -46,7 +46,7 @@
                         <div><strong>Available at:</strong></div>
                         <ul>
                             {% for store in stores %}
-                                <li>{{ store.name }} - {{ store.address }}</li>
+                                <li>{{ store.name }} - {{ store.address }} - <a href={{ store.link }}>{{ store.link }}</a></li>
                             {% endfor %}
                         </ul>
                     </div>
