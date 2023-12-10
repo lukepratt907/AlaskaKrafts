@@ -171,7 +171,12 @@ def search_books(request):
     else:
         books = Book.objects.all()
 
-    return render(request, 'search.html', {'books': books, 'query': query})
+    return render(request, 'search.html', {
+        'books': books, 
+        'query': query,
+        'favorites': request.user.favorites.all(),
+        'cart': request.user.cart.all(),
+        })
 
 def checkout_page(request):
     cart = request.user.cart.all()

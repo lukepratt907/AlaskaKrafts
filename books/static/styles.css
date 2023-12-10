@@ -131,3 +131,10 @@ nav {
   margin-left: 100px;
   border: 0px;
 }
+.full-width-image {
+  width: 100%;
+  position: absolute;
+  height: 100%;
+  top: 0%;
+  left: 0%;
+}
