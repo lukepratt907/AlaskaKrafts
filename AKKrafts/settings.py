@@ -22,12 +22,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-rw3!bco&uzzlq0(o#axbb#q5@m@=8&h4%=l7a7qemov8*c*-q*'#cant be shown
+#SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True #cant be shown
+#DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
 
 ALLOWED_HOSTS = []
-
+#ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
 
 # Application definition
 
@@ -81,8 +83,12 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
 DATABASES["default"] = dj_database_url.parse("postgres://akk_db_user:chUT5vu4qdsR68AuTIOAiLjVswicRweA@dpg-clp8qbp46foc73a7r2ng-a.oregon-postgres.render.com/akk_db")
-#cant be shown
+#database_url = os.environ.get("DATABASE_URL")
+#DATABASES["default"] = dj_database_url.parse(database_url)
+
+
 
 AUTH_USER_MODEL = 'books.User'
 # Password validation
@@ -120,6 +126,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / "staticfiles"
 MEDIA_ROOT = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
@@ -135,6 +142,7 @@ EMAIL_BACKEND='django.core.mail.backends.filebased.EmailBackend'
 EMAIL_FILE_PATH = os.path.join(BASE_DIR, 'sent_emails')
 
 SENDGRID_API_KEY = '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'#cant be shown
+#SENDGRID_API_KEY = os.environ.get("SENDGRID_API_KEY")
 DEFAULT_FROM_EMAIL = 'alaskakrafts907@gmail.com'
 
 EMAIL_HOST = 'smtp.sendgrid.net'
