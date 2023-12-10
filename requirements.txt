@@ -9,3 +9,4 @@ psycopg2-binary==2.9.9
 pyscopg2==66.0.2
 sqlparse==0.4.3
 typing_extensions==4.8.0
+whitenoise==6.6.0

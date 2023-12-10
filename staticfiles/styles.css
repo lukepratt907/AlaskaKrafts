@@ -1,0 +1,140 @@
+/*#gridholder {
+    display: grid;
+    grid-template-columns: 2fr;
+}
+.column-1 {
+}
+.column-2 {
+    
+}*/
+.foo {
+    width: 10%;
+}
+
+.title {
+    color: whitesmoke;
+}
+
+/* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+.row.content {height: 200px}
+
+/* Set gray background color and 100% height */
+.sidenav {
+  background-color: #f1f1f1;
+  height: 100%;
+}
+
+/* Set black background color, white text and some padding */
+.footer {
+  background-color: rgb(221, 179, 212);
+  color: white;
+  padding: 0px;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+}
+/* Global variables. */
+:root,
+::backdrop {
+  /* Set sans-serif & mono fonts */
+  --sans-font: -apple-system, BlinkMacSystemFont, "Avenir Next", Avenir,
+    "Nimbus Sans L", Roboto, "Noto Sans", "Segoe UI", Arial, Helvetica,
+    "Helvetica Neue", sans-serif;
+  --mono-font: Consolas, Menlo, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+  --standard-border-radius: 5px;
+
+  /* Default (light) theme */
+  --bg: rgb(221, 179, 212);
+  --accent-bg: #f5f7ff;
+  --text: #212121;
+  --text-light: #585858;
+  --border: #898EA4;
+  --accent: #ffea00;
+  --accent-text: var(--bg);
+
+}
+body > header {
+  
+  background-color: var(--bg);
+}
+
+/* On small screens, set height to 'auto' for sidenav and grid */
+@media screen and (max-width: 767px) {
+    .sidenav {
+      height: auto;
+        padding: 15px;
+    }
+    .row.content {height: auto;} 
+    }
+
+/* change the text color */
+.search-form input[type="text"] {
+  color: #000; 
+  background-color: #fff;
+  padding: 10px; 
+}
+
+center {
+  font-size: large;
+}
+
+a {
+  text-decoration: none;
+  color: pink;
+}
+
+.btn {
+  background-color: pink;
+  font-size: 12px;
+  font-weight: 500;
+  color: black;
+  padding: 10px 20px;
+  border-radius: 500px;
+  font-style: oblique;
+}
+
+a:link {
+ color: black;
+}
+a:active {
+  color: black;
+}
+a:visited{
+  color:black;
+}
+a:hover{
+  color: purple;
+}
+a:focus{
+  color:black;
+}
+.btn:hover {
+  background-color: lightsalmon;
+}
+.welcome {
+  float: right;
+  right: 0px;
+  position: absolute;
+}
+.start {
+  left: 0px;
+  top: 30px;
+  position: absolute;
+  height: auto;
+  width: 250px;
+}
+nav {
+  display: flex;
+  text-align: center;
+}
+.profile {
+  margin-left: 100px;
+  border: 0px;
+}
+.full-width-image {
+  width: 100%;
+  position: absolute;
+  height: 100%;
+  top: 0%;
+  left: 0%;
+}
