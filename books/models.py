@@ -31,6 +31,9 @@ class Store(models.Model):
     name = models.CharField(max_length=100)
     address = models.CharField(max_length=100)
     link = models.URLField(default='')
+
+    def __str__(self):
+        return self.name
     
 class Book(models.Model):
 

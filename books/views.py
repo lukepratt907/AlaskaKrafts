@@ -5,7 +5,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse, reverse_lazy
 from django.http import JsonResponse
-from .models import User, Book, Profile
+from .models import User, Book, Profile, Store
 from .forms import Pic, UserForm
 
 # Create your views here.
@@ -182,19 +182,20 @@ def checkout_page(request):
     cart = request.user.cart.all()
     price = 0
     # Create a list to store information about each book and its stores
-    books_with_stores = []
+    #books_with_stores = []
     for book in cart:
         price += book.price
         # Get the stores for the book
-        stores = book.stores.all()
+    #stores = book.stores.all()
         # Append a dictionary with book and store information to the list
-        books_with_stores.append({
-            'book': book,
-            'stores': stores,
-        })
+    #books_with_stores.append({
+            #'book': book,
+       #'stores': stores,
+    #})
     return render(request, 'checkout.html', {
         'price': price,
         'cart': cart,
-        'books_with_stores': books_with_stores,  # Pass the list to the template
+        'stores': Store.objects.all(),
+        #'books_with_stores': books_with_stores,  # Pass the list to the template
 
     })

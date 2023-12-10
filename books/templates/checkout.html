@@ -45,7 +45,7 @@
                         <!-- Display stores for the book -->
                         <div><strong>Available at:</strong></div>
                         <ul>
-                            {% for store in item.stores %}
+                            {% for store in stores %}
                                 <li>{{ store.name }} - {{ store.address }}</li>
                             {% endfor %}
                         </ul>
