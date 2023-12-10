@@ -5,10 +5,15 @@
         <article>
             <div class="container-fluid">
                 <div class="row content">
-
+                    {% if book.image %}
                     <div class="col-sm-3 sidenav">
                         <div><img class="full-width-image" src="{{ book.image.url }}"></div>
                     </div>
+                    {% else %}
+                    <div class="col-sm-3 sidenav">
+                        <div><img class="full-width-image" src=""></div>
+                    </div>
+                    {% endif %}
                     
                     <div class="col-sm-9">
                         <div><strong>{{ book.title }}</strong></div>
